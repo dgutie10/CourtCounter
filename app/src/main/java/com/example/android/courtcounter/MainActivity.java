@@ -8,7 +8,13 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     int teamAScore = 0;
+    int foulTeamA = 0;
+    int yellowTeamA = 0;
+    int redTeamA = 0;
     int teamBScore = 0;
+    int foulTeamB = 0;
+    int yellowTeamB = 0;
+    int redTeamB = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,52 +23,97 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void displayForTeamA (int score) {
-        TextView textView = (TextView) findViewById(R.id.team_a_score);
-        textView.setText(String.valueOf(score));
+    public void displayForTeamA (int score, String displayType) {
+        if (displayType == "score") {
+            TextView textView = (TextView) findViewById(R.id.team_a_score);
+            textView.setText(String.valueOf(score));
+        }
+        if (displayType == "foul") {
+            TextView textView = (TextView) findViewById(R.id.foul_counter_a);
+            textView.setText(String.valueOf(score));
+        }
+        if (displayType == "yellow") {
+            TextView textView = (TextView) findViewById(R.id.yellow_counter_a);
+            textView.setText(String.valueOf(score));
+        }
+        if (displayType == "red") {
+            TextView textView = (TextView) findViewById(R.id.red_counter_a);
+            textView.setText(String.valueOf(score));
+        }
     }
 
-
-    public void addThreeForTeamA (View view){
-        teamAScore += 3;
-        displayForTeamA(teamAScore);
-    }
-
-    public void addTwoForTeamA (View view) {
-        teamAScore += 2;
-        displayForTeamA(teamAScore);
-    }
 
     public void addOneForTeamA (View view) {
         teamAScore++;
-        displayForTeamA(teamAScore);
+        displayForTeamA(teamAScore, "score");
+    }
+
+    public void addFoulTeamA (View view) {
+        foulTeamA++;
+        displayForTeamA(foulTeamA, "foul");
+    }
+
+    public void addYellowTeamA (View view) {
+        yellowTeamA++;
+        displayForTeamA(yellowTeamA, "yellow");
+    }
+
+    public void addRedTeamA (View view) {
+        redTeamA++;
+        displayForTeamA(redTeamA, "red");
     }
 
 
-    public void displayForTeamB (int score) {
-        TextView textView = (TextView) findViewById(R.id.team_b_score);
-        textView.setText(String.valueOf(score));
+    public void displayForTeamB (int score, String displayType) {
+        if (displayType == "score") {
+            TextView textView = (TextView) findViewById(R.id.team_b_score);
+            textView.setText(String.valueOf(score));
+        }
+        if (displayType == "foul") {
+            TextView textView = (TextView) findViewById(R.id.foul_counter_b);
+            textView.setText(String.valueOf(score));
+        }
+        if (displayType == "yellow") {
+            TextView textView = (TextView) findViewById(R.id.yellow_counter_b);
+            textView.setText(String.valueOf(score));
+        }
+        if (displayType == "red") {
+            TextView textView = (TextView) findViewById(R.id.red_counter_b);
+            textView.setText(String.valueOf(score));
+        }
     }
 
 
-    public void addThreeForTeamB (View view){
-        teamBScore += 3;
-        displayForTeamB(teamBScore);
-    }
-
-    public void addTwoForTeamB (View view) {
-        teamBScore += 2;
-        displayForTeamB(teamBScore);
-    }
 
     public void addOneForTeamB (View view) {
         teamBScore++;
-        displayForTeamB(teamBScore);
+        displayForTeamB(teamBScore,"score");
+    }
+
+    public void addFoulTeamB (View view) {
+        foulTeamB++;
+        displayForTeamB(foulTeamB, "foul");
+    }
+
+    public void addYellowTeamB (View view) {
+        yellowTeamB++;
+        displayForTeamB(yellowTeamB, "yellow");
+    }
+
+    public void addRedTeamB (View view) {
+        redTeamB++;
+        displayForTeamB(redTeamB, "red");
     }
 
     public void resetScores (View view){
         teamAScore = teamBScore = 0;
-        displayForTeamA(teamAScore);
-        displayForTeamB(teamBScore);
+        displayForTeamA(teamAScore, "score");
+        displayForTeamA(teamAScore, "foul");
+        displayForTeamA(teamAScore, "yellow");
+        displayForTeamA(teamAScore, "red");
+        displayForTeamB(teamBScore,"score");
+        displayForTeamB(teamBScore,"foul");
+        displayForTeamB(teamBScore,"yellow");
+        displayForTeamB(teamBScore,"red");
     }
 }
